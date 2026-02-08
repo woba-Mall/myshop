@@ -57,14 +57,14 @@
         </div>
     </div>
 
-    <script>
+ <script>
         function sendToLine() {
             // 抓取選單裡面客人的選擇
             var color = document.getElementById("colorSelect").value;
             var size = document.getElementById("sizeSelect").value;
             
-            // 拼湊要傳給妳的文字（%0A 是換行的意思）
-            var message = "您好！我想訂購【AGE20's 爆水粉餅】%0A顏色：" + color + "%0A號數：" + size + "%0A數量：1";
+            // 拼湊出要傳給妳的文字，包含【新訂單】標籤
+            var message = "【新訂單】%0A我想要訂購：AGE20's 爆水粉餅%0A規格：" + color + " / " + size + "%0A數量：1%0A-----------------%0A(請直接傳送，我會為您登記出貨！)";
             
             // 跳轉到妳的 LINE@ 並自動帶入文字
             window.location.href = "https://line.me/R/oaMessage/@203afvjn/?" + message;
