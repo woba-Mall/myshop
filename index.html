@@ -3,53 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>沃霸電商自媒體美妝小舖</title>
+    <title>TikTok WobaMall</title>
     <style>
-        body { font-family: "PingFang TC", sans-serif; margin: 0; background-color: #fffafb; color: #4a4a4a; }
-        .header { background-color: #ffdae0; padding: 40px 20px; text-align: center; }
+        body { font-family: "PingFang TC", sans-serif; margin: 0; background-color: #fffafb; color: #4a4a4a; text-align: center; }
+        .header { background-color: #ffdae0; padding: 40px 20px; }
         .product-card { background: white; margin: -30px auto 20px; width: 90%; max-width: 500px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
         .product-img { width: 100%; height: auto; display: block; }
-        .content { padding: 25px; text-align: center; }
+        .content { padding: 25px; }
         .price { color: #ff5e7e; font-size: 28px; font-weight: bold; margin: 10px 0; }
         .tag { background: #ff5e7e; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; }
         .buy-button { 
             display: block; background: #333; color: white; padding: 18px; 
             text-decoration: none; border-radius: 10px; font-weight: bold; margin-top: 20px;
         }
+        select { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; margin-top: 5px; font-size: 16px; }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>✨ TikTok WobaMall粉絲限定優惠 ✨</h1>
+        <h1>✨ TikTok WobaMall 粉絲限定 ✨</h1>
         <p>官網下單，免除平台手續費！</p>
     </div>
+
     <div class="product-card">
         <img src="好評熱銷中 (1).jpg" class="product-img">
         <div class="content">
-    <span class="tag">今日特惠</span>
-    <h2>AGE20's 爆水粉餅</h2>
-    <p>TikTok 熱銷爆款！請參考下方規格：</p>
-    
-    <div style="text-align: left; background: #fff5f7; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed #ffb6c1; line-height: 1.6;">
-        <div style="margin-bottom: 8px;">
-            <b>🎨 選擇款式 (粉盒)：</b><br>
-            <span style="display:inline-block; background:white; border:1px solid #ddd; padding:2px 8px; border-radius:5px; margin:2px;">白色</span>
-            <span style="display:inline-block; background:white; border:1px solid #ddd; padding:2px 8px; border-radius:5px; margin:2px;">粉紅色</span>
-            <span style="display:inline-block; background:white; border:1px solid #ddd; padding:2px 8px; border-radius:5px; margin:2px;">黑色</span>
-        </div>
-        <div>
-            <b>🔢 選擇號數 (膚色)：</b><br>
-            <span style="display:inline-block; background:white; border:1px solid #ddd; padding:2px 8px; border-radius:5px; margin:2px;">13 白皙</span>
-            <span style="display:inline-block; background:white; border:1px solid #ddd; padding:2px 8px; border-radius:5px; margin:2px;">21 亮白</span>
-            <span style="display:inline-block; background:white; border:1px solid #ddd; padding:2px 8px; border-radius:5px; margin:2px;">23 自然</span>
+            <span class="tag">今日特惠</span>
+            <h2>AGE20's 爆水粉餅</h2>
+            <p>請選擇您的規格：</p>
+            
+            <div style="text-align: left; background: #fff5f7; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed #ffb6c1;">
+                <div style="margin-bottom: 10px;">
+                    <b>🎨 選擇款式 (粉盒)：</b><br>
+                    <select id="colorSelect">
+                        <option value="白色">白色</option>
+                        <option value="粉紅色">粉紅色</option>
+                        <option value="黑色">黑色</option>
+                    </select>
+                </div>
+                <div>
+                    <b>🔢 選擇號數 (膚色)：</b><br>
+                    <select id="sizeSelect">
+                        <option value="13 白皙">13 白皙</option>
+                        <option value="21 亮白">21 亮白</option>
+                        <option value="23 自然">23 自然</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="price">NT$ 999</div>
+            
+            <a href="javascript:void(0);" onclick="sendToLine()" class="buy-button">📱 確認規格並私訊下單</a>
         </div>
     </div>
 
-    <div class="price">NT$ 999</div>
-    
-    <a href="https://lin.ee/Nd2ZIkr" class="buy-button">📱 加 LINE 私訊規格下單</a>
-    
-    <p style="font-size: 12px; color: #999; margin-top: 10px;">點擊上方加好友，直接私訊款式與數量</p>
-    </div>
+    <script>
+        function sendToLine() {
+            // 抓取選單裡面客人的選擇
+            var color = document.getElementById("colorSelect").value;
+            var size = document.getElementById("sizeSelect").value;
+            
+            // 拼湊要傳給妳的文字（%0A 是換行的意思）
+            var message = "您好！我想訂購【AGE20's 爆水粉餅】%0A顏色：" + color + "%0A號數：" + size + "%0A數量：1";
+            
+            // 跳轉到妳的 LINE@ 並自動帶入文字
+            window.location.href = "https://line.me/R/oaMessage/@203afvjn/?" + message;
+        }
+    </script>
 </body>
 </html>
