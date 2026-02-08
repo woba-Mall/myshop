@@ -63,10 +63,18 @@
             var color = document.getElementById("colorSelect").value;
             var size = document.getElementById("sizeSelect").value;
             
-            // 拼湊出要傳給妳的文字，包含【新訂單】標籤
-            var message = "【新訂單】%0A我想要訂購：AGE20's 爆水粉餅%0A規格：" + color + " / " + size + "%0A數量：1%0A-----------------%0A(請直接傳送，我會為您登記出貨！)";
+            // 拼湊出包含【收件資訊】的完整格式
+            // %0A 是換行符號
+            var message = "【新訂單】%0A我想要訂購：AGE20's 爆水粉餅%0A規格：" + color + " / " + size + "%0A數量：1%0A" +
+                          "-----------------%0A" +
+                          "請填寫收件資訊：%0A" +
+                          "姓名：%0A" +
+                          "電話：%0A" +
+                          "地址：%0A" +
+                          "-----------------%0A" +
+                          "(請填寫完上方資訊後直接傳送，我會盡快為您寄出！)";
             
-            // 跳轉到妳的 LINE@ 並自動帶入文字
+            // 跳轉到妳的 LINE@ 並帶入這段完整的文字
             window.location.href = "https://line.me/R/oaMessage/@203afvjn/?" + message;
         }
     </script>
